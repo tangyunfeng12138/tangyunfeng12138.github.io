@@ -6,15 +6,15 @@
   
   <title>Git学习总结 | My Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="1.    Git  版本控制系统 将数据看作是对小型文件系统的一组快照   2.    基本操作 git status该命令用于检查当前文件状态，如果当前目录具有未跟踪的新文件或已修改未暂存、已暂存未提交至本地仓库的文件，Git都会在此列出。除此之外，可以通过在git status命令后添加--s或short来获取简略格式的状态信息。 git add …该命令用于跟踪新建文件或者用于暂存修改的文">
+  <meta name="description" content="1.    Git  版本控制系统 将数据看作是对小型文件系统的一组快照   2.    基本操作git status 该命令用于检查当前文件状态，如果当前目录具有未跟踪的新文件或已修改未暂存、已暂存未提交至本地仓库的文件，Git都会在此列出。除此之外，可以通过在git status命令后添加--s或short来获取简略格式的状态信息。  git add … 该命令用于跟踪新建文件或者用于暂存修改">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git学习总结">
 <meta property="og:url" content="http://example.com/2021/08/03/Git%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="My Blog">
-<meta property="og:description" content="1.    Git  版本控制系统 将数据看作是对小型文件系统的一组快照   2.    基本操作 git status该命令用于检查当前文件状态，如果当前目录具有未跟踪的新文件或已修改未暂存、已暂存未提交至本地仓库的文件，Git都会在此列出。除此之外，可以通过在git status命令后添加--s或short来获取简略格式的状态信息。 git add …该命令用于跟踪新建文件或者用于暂存修改的文">
+<meta property="og:description" content="1.    Git  版本控制系统 将数据看作是对小型文件系统的一组快照   2.    基本操作git status 该命令用于检查当前文件状态，如果当前目录具有未跟踪的新文件或已修改未暂存、已暂存未提交至本地仓库的文件，Git都会在此列出。除此之外，可以通过在git status命令后添加--s或short来获取简略格式的状态信息。  git add … 该命令用于跟踪新建文件或者用于暂存修改">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-08-03T03:47:40.000Z">
-<meta property="article:modified_time" content="2021-08-03T06:14:41.028Z">
+<meta property="article:modified_time" content="2021-08-03T06:55:12.068Z">
 <meta property="article:author" content="TYF">
 <meta name="twitter:card" content="summary">
   
@@ -101,9 +101,11 @@
 <li>将数据看作是对小型文件系统的一组<em>快照</em></li>
 </ol>
 </blockquote>
-<h2 id="2-基本操作"><a href="#2-基本操作" class="headerlink" title="2.    基本操作"></a>2.    基本操作</h2><blockquote>
-<h4 id="git-status"><a href="#git-status" class="headerlink" title="git status"></a><strong>git status</strong></h4><p>该命令用于检查当前文件状态，如果当前目录具有未跟踪的新文件或已修改未暂存、已暂存未提交至本地仓库的文件，Git都会在此列出。除此之外，可以通过在<code>git status</code>命令后添加<code>--s</code>或<code>short</code>来获取简略格式的状态信息。</p>
-<h4 id="git-add-…"><a href="#git-add-…" class="headerlink" title="git add …"></a><strong>git add <file>…</strong></h4><p>该命令用于跟踪新建文件或者用于暂存修改的文件。例如修改了README.md文件之后，运行<code>git status</code>命令Git会显示如下状态信息：</p>
+<h2 id="2-基本操作"><a href="#2-基本操作" class="headerlink" title="2.    基本操作"></a>2.    基本操作</h2><h4 id="git-status"><a href="#git-status" class="headerlink" title="git status"></a><strong>git status</strong></h4><blockquote>
+<p>该命令用于检查当前文件状态，如果当前目录具有未跟踪的新文件或已修改未暂存、已暂存未提交至本地仓库的文件，Git都会在此列出。除此之外，可以通过在<code>git status</code>命令后添加<code>--s</code>或<code>short</code>来获取简略格式的状态信息。</p>
+</blockquote>
+<h4 id="git-add-…"><a href="#git-add-…" class="headerlink" title="git add …"></a><strong>git add <file>…</strong></h4><blockquote>
+<p>该命令用于跟踪新建文件或者用于暂存修改的文件。例如修改了README.md文件之后，运行<code>git status</code>命令Git会显示如下状态信息：</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Your branch is up to date with <span class="string">&#x27;origin/master&#x27;</span>.</span><br><span class="line"></span><br><span class="line">Changes not staged <span class="keyword">for</span> commit:</span><br><span class="line">(use <span class="string">&quot;git add &lt;file&gt;...&quot;</span> to update what will be committed)</span><br><span class="line">(use <span class="string">&quot;git restore &lt;file&gt;...&quot;</span> to discard changes <span class="keyword">in</span> working directory)</span><br><span class="line">     modified:   README.md</span><br><span class="line"></span><br><span class="line">no changes added to commit (use <span class="string">&quot;git add&quot;</span> and/or <span class="string">&quot;git commit -a&quot;</span>)</span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -112,43 +114,67 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Your branch is up to date with &#x27;origin/master&#x27;.</span><br><span class="line"></span><br><span class="line">Changes to be committed:</span><br><span class="line">(use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)</span><br><span class="line">     modified:   README.md</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>状态信息显示修改后的README.md文件已被暂存。</p>
-<h4 id="git-commit"><a href="#git-commit" class="headerlink" title="git commit"></a><strong>git commit</strong></h4><p><code>git commit</code>命令用于将暂存区域的文件提交至本地仓库。单使用<code>git commit</code>会打开文本编辑器以输入本次提交的说明，可以在命令后面添加<code>-m</code>，并在同一行增加提交说明。除此以外，可以在<code>git commit</code>后面加上<code>-a</code>的选项来跳过使用<code>git add</code>的步骤。</p>
 </blockquote>
-<h2 id="3-远程仓库"><a href="#3-远程仓库" class="headerlink" title="3.    远程仓库"></a>3.    远程仓库</h2><blockquote>
-<h4 id="git-clone-url"><a href="#git-clone-url" class="headerlink" title="git clone [url]"></a><strong>git clone [url]</strong></h4><p>该命令可以克隆远程仓库获得一份已经存在的Git仓库的拷贝。</p>
-<h4 id="git-remote-add"><a href="#git-remote-add" class="headerlink" title="git remote add  "></a><strong>git remote add <shortname> <url></strong></h4><p>该命令用于在本地添加一个远程仓库。</p>
-<h4 id="git-remote"><a href="#git-remote" class="headerlink" title="git remote"></a><strong>git remote</strong></h4><p>该命令可以查看已经配置的远程仓库，并且可以加上<code>-v</code>选项，以显示远程仓库使用的Git保存的简写与其对应的url。其效果如下所示</p>
+<h4 id="git-commit"><a href="#git-commit" class="headerlink" title="git commit"></a><strong>git commit</strong></h4><blockquote>
+<p><code>git commit</code>命令用于将暂存区域的文件提交至本地仓库。单使用<code>git commit</code>会打开文本编辑器以输入本次提交的说明，可以在命令后面添加<code>-m</code>，并在同一行增加提交说明。除此以外，可以在<code>git commit</code>后面加上<code>-a</code>的选项来跳过使用<code>git add</code>的步骤。</p>
+</blockquote>
+<h2 id="3-远程仓库"><a href="#3-远程仓库" class="headerlink" title="3.    远程仓库"></a>3.    远程仓库</h2><h4 id="git-clone-url"><a href="#git-clone-url" class="headerlink" title="git clone [url]"></a><strong>git clone [url]</strong></h4><blockquote>
+<p>该命令可以克隆远程仓库获得一份已经存在的Git仓库的拷贝。</p>
+</blockquote>
+<h4 id="git-remote-add"><a href="#git-remote-add" class="headerlink" title="git remote add  "></a><strong>git remote add <shortname> <url></strong></h4><blockquote>
+<p>该命令用于在本地添加一个远程仓库。</p>
+</blockquote>
+<h4 id="git-remote"><a href="#git-remote" class="headerlink" title="git remote"></a><strong>git remote</strong></h4><blockquote>
+<p>该命令可以查看已经配置的远程仓库，并且可以加上<code>-v</code>选项，以显示远程仓库使用的Git保存的简写与其对应的url。其效果如下所示</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br><span class="line">origin  http://gitlab.h3yun.com/TYF/egg-example.git (fetch)</span><br><span class="line">origin  http://gitlab.h3yun.com/TYF/egg-example.git (push)</span><br></pre></td></tr></table></figure>
 <blockquote>
-<h4 id="git-fetch-remote-name"><a href="#git-fetch-remote-name" class="headerlink" title="git fetch [remote-name]"></a><strong>git fetch [remote-name]</strong></h4><p>该命令可以访问远程仓库，从中拉取所有你还没有的数据。 执行完成后，你将会拥有那个远程仓库中所有分支的引用，可以随时合并或查看。</p>
-<h4 id="git-push-remote-name-branch-name"><a href="#git-push-remote-name-branch-name" class="headerlink" title="git push [remote-name] [branch-name]"></a><strong>git push [remote-name] [branch-name]</strong></h4><p>该命令会将你所做的代码工作备份到远程仓库。</p>
 </blockquote>
-<h2 id="4-分支"><a href="#4-分支" class="headerlink" title="4.    分支"></a>4.    分支</h2><blockquote>
-<h4 id="git-checkout-b-branch-name"><a href="#git-checkout-b-branch-name" class="headerlink" title="git checkout -b [branch-name]"></a><strong>git checkout -b [branch-name]</strong></h4><p>这条命令可以新建一条分支并切换到该条新建分支上，相当于按顺序使用<code>git branch [branch-name]</code>和<code>git checkout [branch-name]</code>两条命令。</p>
+<h4 id="git-fetch-remote-name"><a href="#git-fetch-remote-name" class="headerlink" title="git fetch [remote-name]"></a><strong>git fetch [remote-name]</strong></h4><blockquote>
+<p>该命令可以访问远程仓库，从中拉取所有你还没有的数据。 执行完成后，你将会拥有那个远程仓库中所有分支的引用，可以随时合并或查看。</p>
 </blockquote>
-<h2 id="5-查看提交历史"><a href="#5-查看提交历史" class="headerlink" title="5.    查看提交历史"></a>5.    查看提交历史</h2><blockquote>
-<h4 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a><strong>git log</strong></h4><p>可以使用<code>git log</code>命令来查看提交历史。可以在命令后添加其他的选项来设置历史信息的显示格式。</p>
+<h4 id="git-push-remote-name-branch-name"><a href="#git-push-remote-name-branch-name" class="headerlink" title="git push [remote-name] [branch-name]"></a><strong>git push [remote-name] [branch-name]</strong></h4><blockquote>
+<p>该命令会将你所做的代码工作备份到远程仓库。</p>
+</blockquote>
+<h2 id="4-分支"><a href="#4-分支" class="headerlink" title="4.    分支"></a>4.    分支</h2><h4 id="git-checkout-b-branch-name"><a href="#git-checkout-b-branch-name" class="headerlink" title="git checkout -b [branch-name]"></a><strong>git checkout -b [branch-name]</strong></h4><blockquote>
+<p>这条命令可以新建一条分支并切换到该条新建分支上，相当于按顺序使用<code>git branch [branch-name]</code>和<code>git checkout [branch-name]</code>两条命令。</p>
+</blockquote>
+<h2 id="5-查看提交历史"><a href="#5-查看提交历史" class="headerlink" title="5.    查看提交历史"></a>5.    查看提交历史</h2><h4 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a><strong>git log</strong></h4><blockquote>
+<p>可以使用<code>git log</code>命令来查看提交历史。可以在命令后添加其他的选项来设置历史信息的显示格式。</p>
 <p>如<code>-p</code>,可以显示每次提交的内容差异，<code>--stat</code>可以只显示简略的提交信息，使用<code>--graph</code>可以添加一些ASCII字符串来形象地展示分支、合并历史，等等。</p>
 </blockquote>
-<h2 id="6-tag"><a href="#6-tag" class="headerlink" title="6.    tag"></a>6.    tag</h2><blockquote>
-<h4 id="git-tag"><a href="#git-tag" class="headerlink" title="git tag"></a><strong>git tag</strong></h4><p>可以使用这条命令以字母顺序列出已有的标签。</p>
-<h4 id="git-show-tag-name"><a href="#git-show-tag-name" class="headerlink" title="git show [tag-name]"></a><strong>git show [tag-name]</strong></h4><p>使用这条命令可以看到标签信息以及对应的提交信息。</p>
-<h4 id="git-tag-tag-name"><a href="#git-tag-tag-name" class="headerlink" title="git tag [tag-name]"></a><strong>git tag [tag-name]</strong></h4><p>使用这条命令可以为最近的一次提交打上轻量标签。</p>
-<h4 id="git-tag-a-tag-name-m"><a href="#git-tag-a-tag-name-m" class="headerlink" title="git tag -a [tag-name] -m"></a><strong>git tag -a [tag-name] -m</strong></h4><p>这条命令可以为最近的一次提交打上附注标签，<code>-m</code>选项后面可以加上一条标签信息。</p>
-<h4 id="git-tag-a-tag-name"><a href="#git-tag-a-tag-name" class="headerlink" title="git tag -a [tag-name]"></a><strong>git tag -a [tag-name]</strong></h4><p>如果想要对过去的某次提交打标签可以使用这条命令，使用时需要在命令的后面加上想要打标签的提交的校验和。</p>
-<h4 id="git-push-remote-name-tag-name"><a href="#git-push-remote-name-tag-name" class="headerlink" title="git push [remote-name] [tag-name]"></a><strong>git push [remote-name] [tag-name]</strong></h4><p>这条命令可以将标签显式地标签到远程仓库上。</p>
+<h2 id="6-tag"><a href="#6-tag" class="headerlink" title="6.    tag"></a>6.    tag</h2><h4 id="git-tag"><a href="#git-tag" class="headerlink" title="git tag"></a><strong>git tag</strong></h4><blockquote>
+<p>可以使用这条命令以字母顺序列出已有的标签。</p>
 </blockquote>
-<h2 id="7-撤销操作"><a href="#7-撤销操作" class="headerlink" title="7.    撤销操作"></a>7.    撤销操作</h2><blockquote>
-<h4 id="git-commit-–amend"><a href="#git-commit-–amend" class="headerlink" title="git commit –amend"></a><strong>git commit –amend</strong></h4><p>如果在提交文件之后发现有文件忘记添加到暂存区，或是提交信息写错了，可以在添加遗忘的文件后使用<code>git commit amend</code>命令进行第二次提交，这次提交会代替上一次的提交。</p>
-<h4 id="git-reset-HEAD-…"><a href="#git-reset-HEAD-…" class="headerlink" title="git reset HEAD …"></a><strong>git reset HEAD <file>…</strong></h4><p>该命令可以撤销已经暂存的文件，使用时在命令后加上要撤销暂存的文件名。</p>
-<h4 id="git-checkout-–-…"><a href="#git-checkout-–-…" class="headerlink" title="git checkout – …"></a><strong>git checkout – <file>…</strong></h4><p>该命令可以撤销对文件的修改。</p>
+<h4 id="git-show-tag-name"><a href="#git-show-tag-name" class="headerlink" title="git show [tag-name]"></a><strong>git show [tag-name]</strong></h4><blockquote>
+<p>使用这条命令可以看到标签信息以及对应的提交信息。</p>
+</blockquote>
+<h4 id="git-tag-tag-name"><a href="#git-tag-tag-name" class="headerlink" title="git tag [tag-name]"></a><strong>git tag [tag-name]</strong></h4><blockquote>
+<p>使用这条命令可以为最近的一次提交打上轻量标签。</p>
+</blockquote>
+<h4 id="git-tag-a-tag-name-m"><a href="#git-tag-a-tag-name-m" class="headerlink" title="git tag -a [tag-name] -m"></a><strong>git tag -a [tag-name] -m</strong></h4><blockquote>
+<p>这条命令可以为最近的一次提交打上附注标签，<code>-m</code>选项后面可以加上一条标签信息。</p>
+</blockquote>
+<h4 id="git-tag-a-tag-name"><a href="#git-tag-a-tag-name" class="headerlink" title="git tag -a [tag-name]"></a><strong>git tag -a [tag-name]</strong></h4><blockquote>
+<p>如果想要对过去的某次提交打标签可以使用这条命令，使用时需要在命令的后面加上想要打标签的提交的校验和。</p>
+</blockquote>
+<h4 id="git-push-remote-name-tag-name"><a href="#git-push-remote-name-tag-name" class="headerlink" title="git push [remote-name] [tag-name]"></a><strong>git push [remote-name] [tag-name]</strong></h4><blockquote>
+<p>这条命令可以将标签显式地标签到远程仓库上。</p>
+</blockquote>
+<h2 id="7-撤销操作"><a href="#7-撤销操作" class="headerlink" title="7.    撤销操作"></a>7.    撤销操作</h2><h4 id="git-commit-–amend"><a href="#git-commit-–amend" class="headerlink" title="git commit –amend"></a><strong>git commit –amend</strong></h4><blockquote>
+<p>如果在提交文件之后发现有文件忘记添加到暂存区，或是提交信息写错了，可以在添加遗忘的文件后使用<code>git commit amend</code>命令进行第二次提交，这次提交会代替上一次的提交。</p>
+</blockquote>
+<h4 id="git-reset-HEAD-…"><a href="#git-reset-HEAD-…" class="headerlink" title="git reset HEAD …"></a><strong>git reset HEAD <file>…</strong></h4><blockquote>
+<p>该命令可以撤销已经暂存的文件，使用时在命令后加上要撤销暂存的文件名。</p>
+</blockquote>
+<h4 id="git-checkout-–-…"><a href="#git-checkout-–-…" class="headerlink" title="git checkout – …"></a><strong>git checkout – <file>…</strong></h4><blockquote>
+<p>该命令可以撤销对文件的修改。</p>
 </blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/08/03/Git%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" data-id="ckrvnvbgl000020vldbehaaeq" data-title="Git学习总结" class="article-share-link">Teilen</a>
+      <a data-url="http://example.com/2021/08/03/Git%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" data-id="ckrvpk1am0001s0vldpmfdw6g" data-title="Git学习总结" class="article-share-link">Teilen</a>
       
       
       
@@ -158,11 +184,15 @@
     
 <nav id="article-nav">
   
-  
-    <a href="/2021/08/03/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2021/08/03/Chrome%E8%B0%83%E8%AF%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          Chrome调试基础方法总结
+        
+      </div>
     </a>
+  
   
 </nav>
 
@@ -199,11 +229,15 @@
       <ul>
         
           <li>
-            <a href="/2021/08/03/Git%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">Git学习总结</a>
+            <a href="/2021/08/03/VsCode%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">VsCode使用技巧</a>
           </li>
         
           <li>
-            <a href="/2021/08/03/hello-world/">Hello World</a>
+            <a href="/2021/08/03/Chrome%E8%B0%83%E8%AF%95/">Chrome调试基础方法总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/03/Git%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">Git学习总结</a>
           </li>
         
       </ul>
