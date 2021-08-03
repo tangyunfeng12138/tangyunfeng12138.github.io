@@ -14,7 +14,7 @@
 <meta property="og:description" content="1.    Git  版本控制系统 将数据看作是对小型文件系统的一组快照   2.    基本操作 git status该命令用于检查当前文件状态，如果当前目录具有未跟踪的新文件或已修改未暂存、已暂存未提交至本地仓库的文件，Git都会在此列出。除此之外，可以通过在git status命令后添加--s或short来获取简略格式的状态信息。 git add …该命令用于跟踪新建文件或者用于暂存修改的文">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-08-03T03:47:40.000Z">
-<meta property="article:modified_time" content="2021-08-03T04:31:41.075Z">
+<meta property="article:modified_time" content="2021-08-03T06:14:41.028Z">
 <meta property="article:author" content="TYF">
 <meta name="twitter:card" content="summary">
   
@@ -104,11 +104,13 @@
 <h2 id="2-基本操作"><a href="#2-基本操作" class="headerlink" title="2.    基本操作"></a>2.    基本操作</h2><blockquote>
 <h4 id="git-status"><a href="#git-status" class="headerlink" title="git status"></a><strong>git status</strong></h4><p>该命令用于检查当前文件状态，如果当前目录具有未跟踪的新文件或已修改未暂存、已暂存未提交至本地仓库的文件，Git都会在此列出。除此之外，可以通过在<code>git status</code>命令后添加<code>--s</code>或<code>short</code>来获取简略格式的状态信息。</p>
 <h4 id="git-add-…"><a href="#git-add-…" class="headerlink" title="git add …"></a><strong>git add <file>…</strong></h4><p>该命令用于跟踪新建文件或者用于暂存修改的文件。例如修改了README.md文件之后，运行<code>git status</code>命令Git会显示如下状态信息：</p>
-<figure class="highlight plaintext"><figcaption><span>git status</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">On branch master</span><br><span class="line">Your branch is up to date with &#x27;origin/master&#x27;.</span><br><span class="line"></span><br><span class="line">Changes not staged for commit:</span><br><span class="line">(use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">(use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line">     modified:   README.md</span><br><span class="line"></span><br><span class="line">no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</span><br></pre></td></tr></table></figure>
-
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Your branch is up to date with <span class="string">&#x27;origin/master&#x27;</span>.</span><br><span class="line"></span><br><span class="line">Changes not staged <span class="keyword">for</span> commit:</span><br><span class="line">(use <span class="string">&quot;git add &lt;file&gt;...&quot;</span> to update what will be committed)</span><br><span class="line">(use <span class="string">&quot;git restore &lt;file&gt;...&quot;</span> to discard changes <span class="keyword">in</span> working directory)</span><br><span class="line">     modified:   README.md</span><br><span class="line"></span><br><span class="line">no changes added to commit (use <span class="string">&quot;git add&quot;</span> and/or <span class="string">&quot;git commit -a&quot;</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
 <p>在状态信息中可以看到README.md被修改了，但并未暂存，并提示使用<code>git add &lt;file&gt;...</code>命令进行暂存。在运行<code>git add README.md</code>之后再次运行<code>git status</code>命令：</p>
-<figure class="highlight plaintext"><figcaption><span>git status</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">On branch master</span><br><span class="line">Your branch is up to date with &#x27;origin/master&#x27;.</span><br><span class="line"></span><br><span class="line">Changes to be committed:</span><br><span class="line">(use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)</span><br><span class="line">     modified:   README.md</span><br></pre></td></tr></table></figure>
-
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Your branch is up to date with &#x27;origin/master&#x27;.</span><br><span class="line"></span><br><span class="line">Changes to be committed:</span><br><span class="line">(use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)</span><br><span class="line">     modified:   README.md</span><br></pre></td></tr></table></figure>
+<blockquote>
 <p>状态信息显示修改后的README.md文件已被暂存。</p>
 <h4 id="git-commit"><a href="#git-commit" class="headerlink" title="git commit"></a><strong>git commit</strong></h4><p><code>git commit</code>命令用于将暂存区域的文件提交至本地仓库。单使用<code>git commit</code>会打开文本编辑器以输入本次提交的说明，可以在命令后面添加<code>-m</code>，并在同一行增加提交说明。除此以外，可以在<code>git commit</code>后面加上<code>-a</code>的选项来跳过使用<code>git add</code>的步骤。</p>
 </blockquote>
@@ -116,8 +118,9 @@
 <h4 id="git-clone-url"><a href="#git-clone-url" class="headerlink" title="git clone [url]"></a><strong>git clone [url]</strong></h4><p>该命令可以克隆远程仓库获得一份已经存在的Git仓库的拷贝。</p>
 <h4 id="git-remote-add"><a href="#git-remote-add" class="headerlink" title="git remote add  "></a><strong>git remote add <shortname> <url></strong></h4><p>该命令用于在本地添加一个远程仓库。</p>
 <h4 id="git-remote"><a href="#git-remote" class="headerlink" title="git remote"></a><strong>git remote</strong></h4><p>该命令可以查看已经配置的远程仓库，并且可以加上<code>-v</code>选项，以显示远程仓库使用的Git保存的简写与其对应的url。其效果如下所示</p>
-<figure class="highlight plaintext"><figcaption><span>git remote -v</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">origin  http://gitlab.h3yun.com/TYF/egg-example.git (fetch)</span><br><span class="line">origin  http://gitlab.h3yun.com/TYF/egg-example.git (push)</span><br></pre></td></tr></table></figure>
-
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br><span class="line">origin  http://gitlab.h3yun.com/TYF/egg-example.git (fetch)</span><br><span class="line">origin  http://gitlab.h3yun.com/TYF/egg-example.git (push)</span><br></pre></td></tr></table></figure>
+<blockquote>
 <h4 id="git-fetch-remote-name"><a href="#git-fetch-remote-name" class="headerlink" title="git fetch [remote-name]"></a><strong>git fetch [remote-name]</strong></h4><p>该命令可以访问远程仓库，从中拉取所有你还没有的数据。 执行完成后，你将会拥有那个远程仓库中所有分支的引用，可以随时合并或查看。</p>
 <h4 id="git-push-remote-name-branch-name"><a href="#git-push-remote-name-branch-name" class="headerlink" title="git push [remote-name] [branch-name]"></a><strong>git push [remote-name] [branch-name]</strong></h4><p>该命令会将你所做的代码工作备份到远程仓库。</p>
 </blockquote>
@@ -145,7 +148,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/08/03/Git%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" data-id="ckrvkhvkl000068vldwmm2ezx" data-title="Git学习总结" class="article-share-link">Teilen</a>
+      <a data-url="http://example.com/2021/08/03/Git%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" data-id="ckrvnvbgl000020vldbehaaeq" data-title="Git学习总结" class="article-share-link">Teilen</a>
       
       
       
@@ -154,15 +157,6 @@
   
     
 <nav id="article-nav">
-  
-    <a href="/2021/08/03/chrome%E8%B0%83%E8%AF%95/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
-      <div class="article-nav-title">
-        
-          chrome调试基础方法简要
-        
-      </div>
-    </a>
   
   
     <a href="/2021/08/03/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
@@ -203,10 +197,6 @@
     <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
-        
-          <li>
-            <a href="/2021/08/03/chrome%E8%B0%83%E8%AF%95/">chrome调试基础方法简要</a>
-          </li>
         
           <li>
             <a href="/2021/08/03/Git%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">Git学习总结</a>
