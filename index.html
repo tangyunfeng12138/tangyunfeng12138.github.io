@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>Hexo</title>
+  <title>My Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="My Blog">
 <meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+<meta property="og:site_name" content="My Blog">
+<meta property="og:locale">
+<meta property="article:author" content="TYF">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="My Blog" type="application/atom+xml">
   
   
     <link rel="shortcut icon" href="/favicon.png">
@@ -42,7 +42,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">My Blog</a>
       </h1>
       
     </div>
@@ -71,6 +71,67 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-chrome调试" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/03/chrome%E8%B0%83%E8%AF%95/" class="article-date">
+  <time class="dt-published" datetime="2021-08-03T03:57:40.000Z" itemprop="datePublished">2021-08-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/03/chrome%E8%B0%83%E8%AF%95/">chrome调试基础方法简要</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="1-调试工具"><a href="#1-调试工具" class="headerlink" title="1.    调试工具"></a>1.    调试工具</h3><blockquote>
+<p>在浏览器中通过按<code>Ctrl+Shift+I</code>或者<code>F12</code>可以打开开发者工具，我们调试过程中所需要的各种工具面板及调试信息都在这里。</p>
+<h4 id="1-Element"><a href="#1-Element" class="headerlink" title="1.    Element"></a>1.    Element</h4><p><img src="css/images/chrome/img1.png" alt="img1"></p>
+<p>上图是开发者工具中的功能菜单，每个菜单都有相应的功能和使用方法，从左往右的第二个图标是设备图标，点击它可以切换到不同的终端进行开发模式，移动端和PC端的一个切换，可以选择不同的移动终端设备，同时可以选择不同的尺寸比例。</p>
+<p>点击Elements菜单，可以查看，修改页面上的元素，包括DOM标签，以及CSS样式的查看，修改，还有相关盒模型的图形信息。下图我们可以看到当我鼠标选择id为id1的div元素时，下方的Styles栏会展示出此id的样式信息，此时可以进行修改，修改会立即在页面上生效。</p>
+<img src="css/images/chrome/img2.png" style="zoom:50%;" />
+
+<h4 id="2-Console控制台"><a href="#2-Console控制台" class="headerlink" title="2.    Console控制台"></a>2.    Console控制台</h4><p>Console控制台可以用于打印和输出相关的命令信息，除此之外，在调试器在断点暂停时，可以用<code>console.log()</code>来查看一些页面数据。</p>
+<h4 id="3-Sources"><a href="#3-Sources" class="headerlink" title="3.    Sources"></a>3.    Sources</h4><p><img src="css/images/chrome/img3.png"></p>
+<p>上图中的Sources菜单显示了js资源页面，在这个页面内我们可以找到当前浏览器页面中的js源文件，方便我们查看和调试。</p>
+<h4 id="4-Network"><a href="#4-Network" class="headerlink" title="4.    Network"></a>4.    Network</h4><p>网络请求菜单可以看到所有的资源请求，包括网络请求，图片资源，html，css，js文件等请求，可以根据需求筛选请求项，一般多用于网络请求的查看和分析，分析后端接口是否正确传输，获取的数据是否准确。</p>
+<img src="css/images/chrome/img4.png" alt="img4"  />
+
+<p>点击请求名可查看相应的请求头信息及响应信息等。</p>
+</blockquote>
+<h3 id="2-断点调试"><a href="#2-断点调试" class="headerlink" title="2.    断点调试"></a>2.    断点调试</h3><blockquote>
+<h4 id="1-断点"><a href="#1-断点" class="headerlink" title="1.    断点"></a>1.    断点</h4><p>在代码的某一处打上断点后，启动调试时，调试器会在断点处自动暂停JavaScript代码执行。</p>
+<p>想要打上断点只需要在那一行的代码的行序上点击鼠标左键即可,点击右键可展示更多选项,比如编辑、删除、禁用断点等。</p>
+<p><img src="css/images/chrome/img5.png" alt="img5"></p>
+<h4 id="2-Watch"><a href="#2-Watch" class="headerlink" title="2.    Watch"></a>2.    Watch</h4><p>右侧的信息下拉列表中的Watch栏可以通过点击<code>+</code>号输入表达式。调试器会随时显示并在执行过程中更新它的值。</p>
+<h4 id="3-Call-Stack"><a href="#3-Call-Stack" class="headerlink" title="3.    Call Stack"></a>3.    Call Stack</h4><p>当执行到某一程序块的断点处停下来后，右侧调试区的<code>Call Stack</code> 会显示当前断点所处的方法调用栈，从上到下由最新调用处依次往下排列。</p>
+<h4 id="4-Scope"><a href="#4-Scope" class="headerlink" title="4.    Scope"></a>4.    Scope</h4><p>Scope栏可以显示当前的变量。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/03/chrome%E8%B0%83%E8%AF%95/" data-id="ckrvkf8ai0000g8vlbyo0arm7" data-title="chrome调试基础方法简要" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Git学习总结" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/08/03/Git%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" class="article-date">
@@ -93,7 +154,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="Git学习总结"><a href="#Git学习总结" class="headerlink" title="Git学习总结"></a>Git学习总结</h1><h2 id="1-Git"><a href="#1-Git" class="headerlink" title="1.    Git"></a>1.    Git</h2><blockquote>
+        <h2 id="1-Git"><a href="#1-Git" class="headerlink" title="1.    Git"></a>1.    Git</h2><blockquote>
 <ol>
 <li>版本控制系统</li>
 <li>将数据看作是对小型文件系统的一组<em>快照</em></li>
@@ -143,7 +204,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/08/03/Git%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" data-id="ckrvj3ut400007ovl9svv1yan" data-title="Git学习总结" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/08/03/Git%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" data-id="ckrvkf8am0001g8vlbox5eccf" data-title="Git学习总结" class="article-share-link">Share</a>
       
       
       
@@ -194,7 +255,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/08/03/hello-world/" data-id="ckrvj3ute00017ovl9uqj9gds" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/08/03/hello-world/" data-id="ckrvkf8au0002g8vl5swmbkir" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
@@ -237,6 +298,10 @@
       <ul>
         
           <li>
+            <a href="/2021/08/03/chrome%E8%B0%83%E8%AF%95/">chrome调试基础方法简要</a>
+          </li>
+        
+          <li>
             <a href="/2021/08/03/Git%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">Git学习总结</a>
           </li>
         
@@ -257,7 +322,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       
-      &copy; 2021 John Doe<br>
+      &copy; 2021 TYF<br>
       Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
