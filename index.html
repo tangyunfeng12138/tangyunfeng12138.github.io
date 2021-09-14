@@ -241,12 +241,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tangyunfeng12138.github.io/2021/08/06/Vue%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0%E5%8F%98%E5%8C%96%E4%BE%A6%E6%B5%8B%E7%AF%87%EF%BC%88%E4%B8%80%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="https://tangyunfeng12138.github.io/2021/09/14/JavaScript%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/img1.jpg">
+      <meta itemprop="image" content="/images/ava.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -260,7 +260,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/08/06/Vue%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0%E5%8F%98%E5%8C%96%E4%BE%A6%E6%B5%8B%E7%AF%87%EF%BC%88%E4%B8%80%EF%BC%89/" itemprop="url">Vue源码学习日记·变化侦测篇（一）</a></h1>
+                <a class="post-title-link" href="/2021/09/14/JavaScript%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" itemprop="url">JavaScript知识点总结</a></h1>
         
 
         <div class="post-meta">
@@ -272,8 +272,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-08-06T16:36:30+08:00">
-                2021-08-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-14T14:05:14+08:00">
+                2021-09-14
               </time>
             
 
@@ -291,8 +291,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2021/08/06/Vue%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0%E5%8F%98%E5%8C%96%E4%BE%A6%E6%B5%8B%E7%AF%87%EF%BC%88%E4%B8%80%EF%BC%89/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2021/08/06/Vue%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0%E5%8F%98%E5%8C%96%E4%BE%A6%E6%B5%8B%E7%AF%87%EF%BC%88%E4%B8%80%EF%BC%89/" itemprop="commentCount"></span>
+                <a href="/2021/09/14/JavaScript%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/09/14/JavaScript%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -321,15 +321,20 @@
 
       
         
-          <p>这个系列日记主要记录一下自己学习Vue源码的过程，学习过程主要参考Vue中文社区的Vue源码解析文档，文档所分析源码版本有所不同，但代码逻辑差别不大，附上解析文档地址<a target="_blank" rel="noopener" href="https://vue-js.com/learn-vue/">《Vue源码系列》</a>，以及Vue源码地址链接：<a target="_blank" rel="noopener" href="https://github.com/vuejs/vue">https://github.com/vuejs/vue</a>。</p>
-<h2 id="变化侦测"><a href="#变化侦测" class="headerlink" title="变化侦测"></a>变化侦测</h2><p>Vue的最大特点之一就是数据驱动视图，视图是用户可以直观的看到的页面，现代的Web应用不仅仅是静态的，而是可以改变，这种改变可以是页面的外观，如页面的背景、颜色、文字大小等等，也可以是页面所显示的信息的更改。所谓数据驱动视图，就是由于用户的操作或后端的变化所导致的数据改变，在数据改变的同时，页面也随之而变化。</p>
-<p>而页面如何根据数据的更改而变化呢？在数据驱动视图的模式中，数据与页面的关系就像一个函数：<code>y = f(x)</code>，x就是传入函数的数据及数据更改信息，y就是数据通过函数所得的页面结果。Vue就是其中的<code>f()</code>函数，Vue发现数据发生改变后，经过一系列的操作最后将结果反应在页面上。</p>
-<p>首先，必须是数据发生了改变，页面才会进行更改，那么Vue是如何知道数据发生改变了呢？这就涉及到了Vue中的变化侦测，即是去追踪数据的状态，当数据变化时，通过数据变化的信息，立即去更改页面。Vue涉及到变化侦测部分的代码位于<code>src&gt;core&gt;observer</code>文件夹内。</p>
-<h3 id="Object的变化侦测"><a href="#Object的变化侦测" class="headerlink" title="Object的变化侦测"></a>Object的变化侦测</h3><h3 id="Object数据“可观测化”"><a href="#Object数据“可观测化”" class="headerlink" title="Object数据“可观测化”"></a>Object数据“可观测化”</h3><p>要想知道数据什么时候发生变化，就要先使得数据变得可观测，像如下的代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> user = &#123;</span><br><span class="line">    <span class="attr">name</span> : <span class="string">&quot;tom&quot;</span>,</span><br><span class="line">    <span class="attr">age</span> : <span class="number">23</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">user.age = <span class="number">34</span>;</span><br></pre></td></tr></table></figure>
+          <h2 id="JavaScript简介"><a href="#JavaScript简介" class="headerlink" title="JavaScript简介"></a>JavaScript简介</h2><h4 id="JavaScript由来"><a href="#JavaScript由来" class="headerlink" title="JavaScript由来"></a>JavaScript由来</h4><p><em>JavaScript</em> 最初被创建的目的是“使网页更生动”。</p>
+<p>这种编程语言写出来的程序被称为 <strong>脚本</strong>。它们可以被直接写在网页的 HTML 中，在页面加载的时候自动执行。</p>
+<p>脚本被以纯文本的形式提供和执行。它们不需要特殊的准备或编译即可运行。</p>
+<h4 id="浏览器中的JavaScript"><a href="#浏览器中的JavaScript" class="headerlink" title="浏览器中的JavaScript"></a>浏览器中的JavaScript</h4><p>浏览器中的 JavaScript 可以做与网页操作、用户交互和 Web 服务器相关的所有事情：</p>
+<ul>
+<li>在网页中添加新的 HTML，修改网页已有内容和网页的样式。</li>
+<li>响应用户的行为，响应鼠标的点击，指针的移动，按键的按动。</li>
+<li>向远程服务器发送网络请求，下载和上传文件（所谓的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Ajax_(programming)">AJAX</a> 和 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Comet_(programming)">COMET</a> 技术）。</li>
+<li>获取或设置 cookie，向访问者提出问题或发送消息。</li>
+<li>记住客户端的数据（“本地存储”）。</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2021/08/06/Vue%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0%E5%8F%98%E5%8C%96%E4%BE%A6%E6%B5%8B%E7%AF%87%EF%BC%88%E4%B8%80%EF%BC%89/#more" rel="contents">
+            <a class="btn" href="/2021/09/14/JavaScript%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -371,7 +376,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
   </nav>
 
 
@@ -407,7 +412,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/images/img1.jpg"
+                src="/images/ava.jpg"
                 alt="" />
             
               <p class="site-author-name" itemprop="name"></p>
@@ -421,7 +426,7 @@
               
                 <a href="/archives/index.html%7C%7C%20archive">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
