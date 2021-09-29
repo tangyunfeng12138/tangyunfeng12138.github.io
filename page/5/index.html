@@ -397,6 +397,15 @@
 <h4 id="git-checkout-–-…"><a href="#git-checkout-–-…" class="headerlink" title="git checkout – …"></a><strong>git checkout – <file>…</strong></h4><blockquote>
 <p>该命令可以撤销对文件的修改。</p>
 </blockquote>
+<h4 id="git-reset-–hard-commitId"><a href="#git-reset-–hard-commitId" class="headerlink" title="git reset –hard commitId"></a><strong>git reset –hard commitId</strong></h4><blockquote>
+<p>该命令可以撤销提交到对应的提交ID<br><strong>git push –force</strong> 可以在本地撤销提交后，强制覆盖到远程仓库，对于受保护的分支，此命令会失败，可以在gitlab上点击提交记录，在点击操作下拉框，点击revert直接进行撤销</p>
+</blockquote>
+<h2 id="7-git命令杂项"><a href="#7-git命令杂项" class="headerlink" title="7.    git命令杂项"></a>7.    git命令杂项</h2><h4 id="git-cherry-pick"><a href="#git-cherry-pick" class="headerlink" title="git cherry-pick "></a><strong>git cherry-pick <commitHash></strong></h4><blockquote>
+<p>上面命令就会将指定的提交commitHash，应用于当前分支。这会在当前分支产生一个新的提交，当然它们的哈希值会不一样。在gitlab上也可以直接点击提交记录后，点击操作下拉框，再点击 cherry-pick，效果与本命令一样,更多用法可以见<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2020/04/git-cherry-pick.html">git cherry-pick 教程</a></p>
+</blockquote>
+<h4 id="git-checkout-b-branchName-remote-branchName"><a href="#git-checkout-b-branchName-remote-branchName" class="headerlink" title="git checkout -b branchName remote/branchName"></a><strong>git checkout -b branchName remote/branchName</strong></h4><blockquote>
+<p>本命令可以在本地git仓库新建一条分支并追踪到远程的分支</p>
+</blockquote>
 
           
         
