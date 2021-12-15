@@ -241,7 +241,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tangyunfeng12138.github.io/2021/08/03/Chrome%E8%B0%83%E8%AF%95/">
+    <link itemprop="mainEntityOfPage" href="https://tangyunfeng12138.github.io/2021/08/03/VsCode%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -260,7 +260,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/08/03/Chrome%E8%B0%83%E8%AF%95/" itemprop="url">Chrome调试基础方法总结</a></h1>
+                <a class="post-title-link" href="/2021/08/03/VsCode%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/" itemprop="url">VsCode使用技巧</a></h1>
         
 
         <div class="post-meta">
@@ -272,7 +272,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-08-03T14:20:22+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-08-03T14:42:24+08:00">
                 2021-08-03
               </time>
             
@@ -291,8 +291,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2021/08/03/Chrome%E8%B0%83%E8%AF%95/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2021/08/03/Chrome%E8%B0%83%E8%AF%95/" itemprop="commentCount"></span>
+                <a href="/2021/08/03/VsCode%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/08/03/VsCode%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -322,47 +322,65 @@
       
         
           
-            <h3 id="1-调试工具"><a href="#1-调试工具" class="headerlink" title="1.    调试工具"></a>1.    调试工具</h3><blockquote>
-<p>在浏览器中通过按<code>Ctrl+Shift+I</code>或者<code>F12</code>可以打开开发者工具，我们调试过程中所需要的各种工具面板及调试信息都在这里。</p>
-</blockquote>
-<h4 id="1-Element"><a href="#1-Element" class="headerlink" title="1.    Element"></a>1.    Element</h4><blockquote>
-<img src="/2021/08/03/Chrome%E8%B0%83%E8%AF%95/img1.png" class="">
+            <h3 id="1-安装步骤"><a href="#1-安装步骤" class="headerlink" title="1.    安装步骤"></a>1.    安装步骤</h3><p>在VsCode官网点击<code>Download</code>选择你电脑系统相应的版本点击下载，安装包下载完成后点击运行，勾选“确认”，点击下一步，选择要安装的位置，一直点击下一步然后点击安装即可。</p>
+<h3 id="2-推荐插件"><a href="#2-推荐插件" class="headerlink" title="2.    推荐插件"></a>2.    推荐插件</h3><h4 id="1-Chinese"><a href="#1-Chinese" class="headerlink" title="1.    Chinese"></a>1.    Chinese</h4><p>该插件可以将VsCode的语言更改为中文，只需要在安装本插件后，根据弹出的提示重启VsCode即可。</p>
+<h4 id="2-Code-Runner"><a href="#2-Code-Runner" class="headerlink" title="2.    Code Runner"></a>2.    Code Runner</h4><p>原本的VsCode无法直接在软件上运行JS代码，在安装这个插件后，VsCode就获得了这个能力，可以直接运行JS脚本，而无需在浏览器上运行。</p>
+<h4 id="3-HTML-Snippets"><a href="#3-HTML-Snippets" class="headerlink" title="3.    HTML Snippets"></a>3.    HTML Snippets</h4><p>该插件可以自动提示HTML中的各类标签属性等，使得程序员无需在完整的输入长长的标签名或属性名。</p>
+<h4 id="4-open-in-browser"><a href="#4-open-in-browser" class="headerlink" title="4.    open in browser"></a>4.    open in browser</h4><p>这个插件可以让你快速在默认的浏览器中打开你所选中的HTML文件。</p>
+<h4 id="5-Bracket-Pair-Colorizer"><a href="#5-Bracket-Pair-Colorizer" class="headerlink" title="5.    Bracket Pair Colorizer"></a>5.    Bracket Pair Colorizer</h4><p>这个插件可以为你的代码中的括号加上不同的颜色，可以让你快速地看出相匹配的一对括号。</p>
+<h4 id="6-Path-Intellisense"><a href="#6-Path-Intellisense" class="headerlink" title="6.    Path Intellisense"></a>6.    Path Intellisense</h4><p>可以在你输入文件路径时提供智能提示。</p>
+<h3 id="3-基础使用"><a href="#3-基础使用" class="headerlink" title="3.    基础使用"></a>3.    基础使用</h3><h4 id="1-用户设置"><a href="#1-用户设置" class="headerlink" title="1.    用户设置"></a>1.    用户设置</h4><p>打开<code>文件--&gt;首选项--&gt;设置--&gt;用户</code>,即可进行用户个人设置，如软件颜色主题，字体大小等等。</p>
+<img src="/2021/08/03/VsCode%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/img2.png" class="">
 
-<p>上图是开发者工具中的功能菜单，每个菜单都有相应的功能和使用方法，从左往右的第二个图标是设备图标，点击它可以切换到不同的终端进行开发模式，移动端和PC端的一个切换，可以选择不同的移动终端设备，同时可以选择不同的尺寸比例。</p>
-<p>点击Elements菜单，可以查看，修改页面上的元素，包括DOM标签，以及CSS样式的查看，修改，还有相关盒模型的图形信息。下图我们可以看到当我鼠标选择id为id1的div元素时，下方的Styles栏会展示出此id的样式信息，此时可以进行修改，修改会立即在页面上生效。</p>
-<img src="/2021/08/03/Chrome%E8%B0%83%E8%AF%95/img2.png" class="">
-
-</blockquote>
-<h4 id="2-Console控制台"><a href="#2-Console控制台" class="headerlink" title="2.    Console控制台"></a>2.    Console控制台</h4><blockquote>
-<p>Console控制台可以用于打印和输出相关的命令信息，除此之外，在调试器在断点暂停时，可以用<code>console.log()</code>来查看一些页面数据。</p>
-</blockquote>
-<h4 id="3-Sources"><a href="#3-Sources" class="headerlink" title="3.    Sources"></a>3.    Sources</h4><blockquote>
-<img src="/2021/08/03/Chrome%E8%B0%83%E8%AF%95/img3.png" class="">
-
-<p>上图中的Sources菜单显示了js资源页面，在这个页面内我们可以找到当前浏览器页面中的js源文件，方便我们查看和调试。</p>
-</blockquote>
-<h4 id="4-Network"><a href="#4-Network" class="headerlink" title="4.    Network"></a>4.    Network</h4><blockquote>
-<p>网络请求菜单可以看到所有的资源请求，包括网络请求，图片资源，html，css，js文件等请求，可以根据需求筛选请求项，一般多用于网络请求的查看和分析，分析后端接口是否正确传输，获取的数据是否准确。</p>
-<img src="/2021/08/03/Chrome%E8%B0%83%E8%AF%95/img4.png" class="">
-
-<p>点击请求名可查看相应的请求头信息及响应信息等。</p>
-</blockquote>
-<h3 id="2-断点调试"><a href="#2-断点调试" class="headerlink" title="2.    断点调试"></a>2.    断点调试</h3><h4 id="1-断点"><a href="#1-断点" class="headerlink" title="1.    断点"></a>1.    断点</h4><blockquote>
-<p>在代码的某一处打上断点后，启动调试时，调试器会在断点处自动暂停JavaScript代码执行。</p>
-<p>想要打上断点只需要在那一行的代码的行序上点击鼠标左键即可,点击右键可展示更多选项,比如编辑、删除、禁用断点等。</p>
-<img src="/2021/08/03/Chrome%E8%B0%83%E8%AF%95/img5.png" class="">
-
-</blockquote>
-<h4 id="2-Watch"><a href="#2-Watch" class="headerlink" title="2.    Watch"></a>2.    Watch</h4><blockquote>
-<p>右侧的信息下拉列表中的Watch栏可以通过点击<code>+</code>号输入表达式。调试器会随时显示并在执行过程中更新它的值。</p>
-</blockquote>
-<h4 id="3-Call-Stack"><a href="#3-Call-Stack" class="headerlink" title="3.    Call Stack"></a>3.    Call Stack</h4><blockquote>
-<p>当执行到某一程序块的断点处停下来后，右侧调试区的<code>Call Stack</code> 会显示当前断点所处的方法调用栈，从上到下由最新调用处依次往下排列。</p>
-</blockquote>
-<h4 id="4-Scope"><a href="#4-Scope" class="headerlink" title="4.    Scope"></a>4.    Scope</h4><blockquote>
-<p>Scope栏可以显示当前的变量。</p>
-</blockquote>
-
+<h4 id="2-常用快捷键"><a href="#2-常用快捷键" class="headerlink" title="2.    常用快捷键"></a>2.    常用快捷键</h4><ul>
+<li><p>重开一行：光标在行尾的话，回车即可；不在行尾，<code>ctrl + enter</code> 向下重开一行；<code>ctrl + shift + enter</code> 则是在上一行重开一行</p>
+</li>
+<li><p>删除一行：光标没有选择内容时，<code>ctrl + x</code> 剪切一行；<code>ctrl + shift + k</code> 直接删除一行</p>
+</li>
+<li><p>移动一行：<code>alt + ↑</code> 向上移动一行；<code>alt + ↓</code> 向下移动一行</p>
+</li>
+<li><p>复制一行：<code>shift + alt + ↓</code> 向下复制一行；<code>shift + alt + ↑</code> 向上复制一行</p>
+</li>
+<li><p><code>ctrl + z</code> 回退</p>
+</li>
+<li><p>选中一个词：<code>ctrl + d</code></p>
+</li>
+</ul>
+<p>搜索或者替换：</p>
+<ul>
+<li><code>ctrl + f</code> ：搜索</li>
+<li><code>ctrl + alt + f</code>： 替换</li>
+<li><code>ctrl + shift + f</code>：在项目内搜索</li>
+</ul>
+<ul>
+<li><p>通过Ctrl + `可以打开或关闭终端</p>
+</li>
+<li><p><code>Ctrl + P</code> 快速打开最近打开的文件</p>
+</li>
+<li><p><code>Ctrl + Shift + N</code> 打开新的编辑器窗口</p>
+</li>
+<li><p><code>Ctrl + Shift + W</code>关闭编辑器</p>
+</li>
+<li><p><code>Home</code> 光标跳转到行头</p>
+</li>
+<li><p><code>End</code> 光标跳转到行尾</p>
+</li>
+<li><p><code>Ctrl + Home</code> 跳转到页头</p>
+</li>
+<li><p><code>Ctrl + End</code> 跳转到页尾</p>
+</li>
+<li><p><code>Ctrl + Shift + [</code> 折叠区域代码</p>
+</li>
+<li><p><code>Ctrl + Shift + ]</code>展开区域代码</p>
+</li>
+<li><p><code>Ctrl + /</code> 添加关闭行注释</p>
+</li>
+<li><p><code>Shift + Alt +A</code> 块区域注释</p>
+</li>
+</ul>
+<h4 id="3-打开项目文件"><a href="#3-打开项目文件" class="headerlink" title="3.    打开项目文件"></a>3.    打开项目文件</h4><p>点击<code>文件</code>，在展开的下拉列表中点击<code>打开文件夹</code>，在打开的资源管理器中选择你需要编辑的项目的文件夹，点击打开。VsCode的左侧导航栏中即会显示当前打开的文件夹，包括其中的文件目录等。点击其中的文件即可在右侧的内容区编辑代码。</p>
+<h4 id="4-Git"><a href="#4-Git" class="headerlink" title="4.    Git"></a>4.    Git</h4><p>如果打开的项目配置了Git，可以在图中所示的位置对更改的文件进行暂存和提交。</p>
+<img src="/2021/08/03/VsCode%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/img1.png" class="">
           
         
       
@@ -401,7 +419,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">下一页</a>
   </nav>
 
 
@@ -451,7 +469,7 @@
               
                 <a href="/archives/index.html%7C%7C%20archive">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

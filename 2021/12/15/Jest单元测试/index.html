@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Jest——单元测试单元测试工具jestJavaScript测试框架 ts-jestTypeScript预处理器 @type&#x2F;jest用于测试框架的类型推断 @vue&#x2F;unit-jest运行jest单元测试文件 vue-jestVue文件预处理器（没有完全支持vue-loader的功能，如自定义块等） @vue&#x2F;test-utilsvue测试工具，提供了一系列测试vue组件的方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TYF的博客">
+<meta property="og:url" content="https://tangyunfeng12138.github.io/2021/12/15/Jest%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/index.html">
+<meta property="og:site_name" content="TYF的博客">
+<meta property="og:description" content="Jest——单元测试单元测试工具jestJavaScript测试框架 ts-jestTypeScript预处理器 @type&#x2F;jest用于测试框架的类型推断 @vue&#x2F;unit-jest运行jest单元测试文件 vue-jestVue文件预处理器（没有完全支持vue-loader的功能，如自定义块等） @vue&#x2F;test-utilsvue测试工具，提供了一系列测试vue组件的方法">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-12-15T07:11:26.200Z">
+<meta property="article:modified_time" content="2021-12-15T07:13:55.885Z">
+<meta property="article:author" content="TYF">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://tangyunfeng12138.github.io/2021/12/15/Jest单元测试/"/>
+
+
+
+
+
+  <title> | TYF的博客</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TYF的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/index.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tangyunfeng12138.github.io/2021/12/15/Jest%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/ava.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TYF的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-12-15T15:11:26+08:00">
+                2021-12-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/12/15/Jest%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/12/15/Jest%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Jest——单元测试"><a href="#Jest——单元测试" class="headerlink" title="Jest——单元测试"></a>Jest——单元测试</h1><h4 id="单元测试工具"><a href="#单元测试工具" class="headerlink" title="单元测试工具"></a>单元测试工具</h4><h5 id="jest"><a href="#jest" class="headerlink" title="jest"></a>jest</h5><p>JavaScript测试框架</p>
+<h5 id="ts-jest"><a href="#ts-jest" class="headerlink" title="ts-jest"></a>ts-jest</h5><p>TypeScript预处理器</p>
+<h5 id="type-jest"><a href="#type-jest" class="headerlink" title="@type/jest"></a>@type/jest</h5><p>用于测试框架的类型推断</p>
+<h5 id="vue-unit-jest"><a href="#vue-unit-jest" class="headerlink" title="@vue/unit-jest"></a>@vue/unit-jest</h5><p>运行jest单元测试文件</p>
+<h5 id="vue-jest"><a href="#vue-jest" class="headerlink" title="vue-jest"></a>vue-jest</h5><p>Vue文件预处理器（没有完全支持vue-loader的功能，如自定义块等）</p>
+<h5 id="vue-test-utils"><a href="#vue-test-utils" class="headerlink" title="@vue/test-utils"></a>@vue/test-utils</h5><p>vue测试工具，提供了一系列测试vue组件的方法</p>
+<span id="more"></span>
+<h4 id="Jest的基础使用"><a href="#Jest的基础使用" class="headerlink" title="Jest的基础使用"></a>Jest的基础使用</h4><p>一个简单的使用示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">decribe(<span class="string">&#x27;Test Info&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    test(<span class="string">&#x27;1 + 1 = 2&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        expect(<span class="number">1</span> + <span class="number">1</span>).toBe(<span class="number">2</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h5 id="匹配器"><a href="#匹配器" class="headerlink" title="匹配器"></a>匹配器</h5><p>匹配器可以让使用者用各种方法进行测试。</p>
+<h6 id="真值"><a href="#真值" class="headerlink" title="真值"></a>真值</h6><p>当代码中的<code>undefined</code>，<code>null</code>，<code>false</code>具有不同含义时，可以使用相应的匹配器进行判断：</p>
+<p><code>toBeNull</code>：只匹配<code>null</code></p>
+<p><code>toBeUndefined</code>：只匹配<code>undefined</code></p>
+<p><code>toBeDefined</code>：与<code>toBeUndefined</code>相反</p>
+<p><code>toBeTruthy</code>：匹配<code>if</code>语句为真的值</p>
+<p><code>toBeFalsy</code>：匹配<code>if</code>语句为假的值</p>
+<h6 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h6><p><code>toBeGreaterThan</code></p>
+<p><code>toBeGreaterThanOrEqual</code></p>
+<p><code>toBeLessThan</code></p>
+<p><code>toBeLessThanOrEqual</code></p>
+<p><code>toBe</code></p>
+<p><code>toEqual</code></p>
+<h6 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h6><p><code>toMatch</code>：匹配相应的字符串或者正则表达式</p>
+<h6 id="数组与可迭代对象"><a href="#数组与可迭代对象" class="headerlink" title="数组与可迭代对象"></a>数组与可迭代对象</h6><p><code>toContain</code>：检查数组或者可迭代对象是否包含某个特定项</p>
+<h6 id="Exceptions"><a href="#Exceptions" class="headerlink" title="Exceptions"></a>Exceptions</h6><p><code>toThrow</code>：测试函数在运行时是否抛出了错误</p>
+<p><strong><code>expect()</code>方法返回一个包含各种匹配器的对象，其中包括<code>.not</code>，与通常匹配器相反，<code>.resolves</code>和<code>rejects</code>用于测试异步代码</strong></p>
+<h5 id="辅助函数"><a href="#辅助函数" class="headerlink" title="辅助函数"></a>辅助函数</h5><p>辅助函数用于在测试前做一些准备工作，或者在运行测试后做一些处理工作</p>
+<h6 id="beforeAll-afterAll"><a href="#beforeAll-afterAll" class="headerlink" title="beforeAll    afterAll"></a><code>beforeAll</code>    <code>afterAll</code></h6><p>用于在文件开始进行一次性设置</p>
+<h6 id="beforeEach-afterEach"><a href="#beforeEach-afterEach" class="headerlink" title="beforeEach    afterEach"></a><code>beforeEach</code>    <code>afterEach</code></h6><p>用于在每个测试，及<code>test</code>块运行前进行重复设置</p>
+<p><code>before</code>块与<code>after</code>块可以使用<code>decribe</code>块进行分组，但两者存在于<code>decribe</code>块内部时，则只适用于该快内部的测试。</p>
+<h5 id="模拟函数"><a href="#模拟函数" class="headerlink" title="模拟函数"></a>模拟函数</h5><p>Mock函数可以擦除一个函数的具体实现，捕获对函数的调用，在测试时配置返回值。</p>
+<p>简单的说就是可以用自己创建的mock函数替换已经存在的函数，供测试时的代码使用，通过这个mock函数，我们可以获得代码是怎么调用这个mock函数的信息，以及返回值，并且我们还可以指定这个mock函数在被调用时的返回值，或者指定mock函数在某次被调用时的具体实现。</p>
+<h6 id="mock属性"><a href="#mock属性" class="headerlink" title=".mock属性"></a><code>.mock</code>属性</h6><p>mock函数的<code>.mock</code>属性保存了该函数被调用时的参数以及返回值的信息。</p>
+<h6 id="Mock返回值"><a href="#Mock返回值" class="headerlink" title="Mock返回值"></a>Mock返回值</h6><p>在使用mock函数时可以设置mock函数被调用时的返回值，而不用考虑调用时mock函数的实现或者参数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myMock = jest.fn();</span><br><span class="line"></span><br><span class="line">myMock.mockReturnValueOnce(<span class="number">10</span>);</span><br><span class="line"><span class="built_in">console</span>.log(myMock(), myMock()); <span class="comment">// 10, undefined</span></span><br><span class="line"></span><br><span class="line">myMock.mockReturnValueOnce(<span class="number">12</span>).mockReturnValue(<span class="number">23</span>);</span><br><span class="line"><span class="built_in">console</span>.log(myMock(), myMock(), myMock()); <span class="comment">// 12, 23, 23</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="Mock实现"><a href="#Mock实现" class="headerlink" title="Mock实现"></a>Mock实现</h6><p>可以用 <code>jest.fn</code> 或 <code>mockImplementationOnce</code>/<code>mockImplementation</code>方法来实现Mock函数。</p>
+<h4 id="Jest的常用配置项"><a href="#Jest的常用配置项" class="headerlink" title="Jest的常用配置项"></a>Jest的常用配置项</h4><p><code>testMatch</code>    配置检测测试文件的正则表达式</p>
+<p><code>moduleFileExtensions</code>    配置模块使用的文件扩展名</p>
+<p><code>moduleNameMapper</code>    配置正则表达式到模块名称的映射</p>
+<p><code>colletCoverage</code>    配置是否收集测试时的覆盖率信息</p>
+<p><code>collectCoverageFrom</code> 配置哪些文件需要收集</p>
+<p><code>coverageDirectory</code>    输出覆盖信息文件的目录</p>
+<p><code>transform</code>    配置用于转换文件的转换器</p>
+<p><code>globals</code>    创建全局变量</p>
+<p><code>resolver</code>    配置自定义的路径解析器</p>
+<h4 id="遇到的一些问题"><a href="#遇到的一些问题" class="headerlink" title="遇到的一些问题"></a>遇到的一些问题</h4><p>如果在代码中使用<code>tsconfig</code>中配置的<code>paths</code>路径来导入其他模块，jest可能会无法解析，可以通过安装一个路径解析工具解决：</p>
+<p><code>jest-resolver-tsconfig-paths</code></p>
+<p>安装后在jest.config.js中配置<code>resolver</code>项：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">resolver</span>: <span class="string">&#x27;jest-resolver-tsconfig-paths&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果代码中需要使用<code>Store</code>中的数据，或许可以使用辅助函数，在辅助函数中使用<code>Vuex.Store</code>构建一个<code>Store</code>实例。</p>
+<p>单元测试比较注重单个模块的测试，如果要测试的方法中调用了其他的方法，或许可以考虑使用Mock函数模拟函数实现或者函数的返回值。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/09/14/JavaScript%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" rel="next" title="JavaScript知识点总结">
+                <i class="fa fa-chevron-left"></i> JavaScript知识点总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/ava.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/index.html%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/tangyunfeng12138" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Jest%E2%80%94%E2%80%94%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="nav-number">1.</span> <span class="nav-text">Jest——单元测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">单元测试工具</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#jest"><span class="nav-number">1.0.0.1.1.</span> <span class="nav-text">jest</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ts-jest"><span class="nav-number">1.0.0.1.2.</span> <span class="nav-text">ts-jest</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#type-jest"><span class="nav-number">1.0.0.1.3.</span> <span class="nav-text">@type&#x2F;jest</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#vue-unit-jest"><span class="nav-number">1.0.0.1.4.</span> <span class="nav-text">@vue&#x2F;unit-jest</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#vue-jest"><span class="nav-number">1.0.0.1.5.</span> <span class="nav-text">vue-jest</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#vue-test-utils"><span class="nav-number">1.0.0.1.6.</span> <span class="nav-text">@vue&#x2F;test-utils</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Jest%E7%9A%84%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">Jest的基础使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8C%B9%E9%85%8D%E5%99%A8"><span class="nav-number">1.0.0.2.1.</span> <span class="nav-text">匹配器</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%9C%9F%E5%80%BC"><span class="nav-number">1.0.0.2.1.1.</span> <span class="nav-text">真值</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%95%B0%E5%AD%97"><span class="nav-number">1.0.0.2.1.2.</span> <span class="nav-text">数字</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.0.0.2.1.3.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E4%B8%8E%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.0.0.2.1.4.</span> <span class="nav-text">数组与可迭代对象</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Exceptions"><span class="nav-number">1.0.0.2.1.5.</span> <span class="nav-text">Exceptions</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BE%85%E5%8A%A9%E5%87%BD%E6%95%B0"><span class="nav-number">1.0.0.2.2.</span> <span class="nav-text">辅助函数</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#beforeAll-afterAll"><span class="nav-number">1.0.0.2.2.1.</span> <span class="nav-text">beforeAll    afterAll</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#beforeEach-afterEach"><span class="nav-number">1.0.0.2.2.2.</span> <span class="nav-text">beforeEach    afterEach</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F%E5%87%BD%E6%95%B0"><span class="nav-number">1.0.0.2.3.</span> <span class="nav-text">模拟函数</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#mock%E5%B1%9E%E6%80%A7"><span class="nav-number">1.0.0.2.3.1.</span> <span class="nav-text">.mock属性</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Mock%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="nav-number">1.0.0.2.3.2.</span> <span class="nav-text">Mock返回值</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Mock%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.0.0.2.3.3.</span> <span class="nav-text">Mock实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Jest%E7%9A%84%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE%E9%A1%B9"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">Jest的常用配置项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">遇到的一些问题</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">TYF</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '7b9YkbsXosidmn0tqmovVEem-gzGzoHsz',
+        appKey: 'VGO57OjFwGg8n383pUjRcojI',
+        placeholder: '分享你的评论吧~',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
